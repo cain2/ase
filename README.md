@@ -2,7 +2,7 @@
 Auto pre-config for Linux (now just on Ubuntu Server)
 
 Author: [cain](mailto:cain@f5workshop.com)
-Version: 0.01 *(build 45)*
+Version: 0.01 *(build 55)*
 
 #### system environment:
 OS: Ubuntu Server LTS 14.04.3
@@ -20,6 +20,12 @@ sudo sh -c "$(wget https://raw.github.com/cain2/vm-auto-config/master/vm-auto-co
 ```
 
 ##### Housekeeping
+you will see this screen:
+
+<img src="https://raw.githubusercontent.com/cain2/vm-auto-config/master/capture/capture.png" width="300px">
+
+and now you should run below command to fix the permission:
+
 ```bash
 exit
 zsh
@@ -42,8 +48,8 @@ sudo chown -R $(whoami):$(whoami) /server/*
 
 #### todo:
 + more os supporting
-+ installing from direct-link from github
++ ~~installing from direct-link from github~~
 + researching
 
 #### latest update:
-1 October 2015 (18:46:47)
+1 October 2015
