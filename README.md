@@ -8,6 +8,17 @@ Version: 0.01 *(build 45)*
 OS: Ubuntu Server LTS 14.04.3
 Kernel: 3.19.0-25-generic
 
+#### installation:
+##### via CURL
+```bash
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/cain2/vm-auto-config/master/vm-auto-config.sh)"
+```
+
+##### via WGET
+```bash
+sh -c "$(wget https://raw.githubusercontent.com/cain2/vm-auto-config/master/vm-auto-config.sh -O -)"
+```
+
 #### features:
 0. install git-core software-properties-common htop tree zsh
 + libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev for __pyenv environment__
@@ -28,4 +39,4 @@ Kernel: 3.19.0-25-generic
 + researching
 
 #### latest update:
-30 September 2015 (17:58:40)
+1 October 2015 (18:46:47)

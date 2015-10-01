@@ -33,8 +33,8 @@ ln -s /server/repo/pyenv ~/.pyenv
 
 git clone https://github.com/yyuu/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
 
-echo "export PYENV_ROOT=\"$HOME/.pyenv\"" > /server/cmd/pyenv.sh
-echo "export PATH=\"$PYENV_ROOT/bin:$PATH\"" >> /server/cmd/pyenv.sh
+echo 'export PYENV_ROOT="$HOME/.pyenv"' > /server/cmd/pyenv.sh
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> /server/cmd/pyenv.sh
 echo 'if which pyenv > /dev/null; then eval "$(pyenv init -)"' >> /server/cmd/pyenv.sh
 echo 'if which pyenv > /dev/null; then eval "$(pyenv virtualenv-init -)"' >> /server/cmd/pyenv.sh
 
@@ -108,7 +108,7 @@ echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> $HOME/.zshenv
 echo 'eval "$(pyenv init -)"' >> $HOME/.zshenv
 echo 'eval "$(pyenv virtualenv-init -)"' >> $HOME/.zshenv
 
-
+sudo chown -R $(whoami):$(whoami) /server/*
 
 
 
