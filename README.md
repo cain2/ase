@@ -11,17 +11,17 @@ Kernel: 3.19.0-25-generic
 #### installation:
 you should run this script as root.
 
-##### via CURL
+##### via curl
 ```bash
 sudo sh -c "$(curl -fsSL https://raw.github.com/cain2/vm-auto-config/master/vm-auto-config.sh)"
 ```
 
-##### via WGET
+##### via wget
 ```bash
 sudo sh -c "$(wget https://raw.github.com/cain2/vm-auto-config/master/vm-auto-config.sh -O -)"
 ```
 
-##### Housekeeping
+##### housekeeping
 you will see this screen:
 
 <img src="https://raw.githubusercontent.com/cain2/vm-auto-config/master/capture/capture.png" width="300px">
