@@ -2,12 +2,6 @@
 
 mkdir -p /server/repo
 mkdir -p /server/cmd
-apt-get update
-apt-get install -y git-core libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev software-properties-common htop tree zsh
-
-# git clone https://github.com/cain2/vm-auto-config.git /server/repo/vm-auto-config
-cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
-cd /etc/ssh/ && sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/g' sshd_config
 
 cp /etc/apt/sources.list /etc/apt/sources.list.bak
 echo "deb http://ftp.cuhk.edu.hk/pub/Linux/ubuntu trusty main restricted universe multiverse" > /etc/apt/sources.list
@@ -20,6 +14,13 @@ echo "deb-src http://ftp.cuhk.edu.hk/pub/Linux/ubuntu trusty-security main restr
 echo "deb-src http://ftp.cuhk.edu.hk/pub/Linux/ubuntu trusty-updates main restricted universe multiverse" >> /etc/apt/sources.list
 echo "deb-src http://ftp.cuhk.edu.hk/pub/Linux/ubuntu trusty-backports main restricted universe multiverse" >> /etc/apt/sources.list
 echo "deb-src http://ftp.cuhk.edu.hk/pub/Linux/ubuntu trusty-proposed main restricted universe" >> /etc/apt/sources.list
+
+apt-get update
+apt-get install -y git-core libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev software-properties-common htop tree zsh
+
+# git clone https://github.com/cain2/vm-auto-config.git /server/repo/vm-auto-config
+cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
+cd /etc/ssh/ && sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/g' sshd_config
 
 mkdir -p $HOME/.ssh
 touch $HOME/.ssh/authorized_keys

@@ -49,7 +49,7 @@ zsh
 
 #### todo:
 + more os supporting
-+ ~~installing from direct-link from github~~
++ ~~installing with 1 line script by direct-link from github~~
 + researching
 
 #### latest update:
