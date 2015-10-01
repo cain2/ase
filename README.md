@@ -9,6 +9,8 @@ OS: Ubuntu Server LTS 14.04.3
 Kernel: 3.19.0-25-generic
 
 #### installation:
+you should run this script as root.
+
 ##### via CURL
 ```bash
 sudo sh -c "$(curl -fsSL https://raw.github.com/cain2/vm-auto-config/master/vm-auto-config.sh)"
@@ -24,12 +26,11 @@ you will see this screen:
 
 <img src="https://raw.githubusercontent.com/cain2/vm-auto-config/master/capture/capture.png" width="300px">
 
-and now you should run below command to fix the permission:
+and now you should run below command to see the result:
 
 ```bash
 exit
 zsh
-sudo chown -R $(whoami):$(whoami) /server/*
 ```
 
 #### features:
