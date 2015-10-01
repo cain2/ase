@@ -107,10 +107,3 @@ echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> $HOME/.zshenv
 
 echo 'eval "$(pyenv init -)"' >> $HOME/.zshenv
 echo 'eval "$(pyenv virtualenv-init -)"' >> $HOME/.zshenv
-
-sudo chown -R $(whoami):$(whoami) /server/*
-
-
-
-
-

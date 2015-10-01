@@ -11,12 +11,19 @@ Kernel: 3.19.0-25-generic
 #### installation:
 ##### via CURL
 ```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/cain2/vm-auto-config/master/vm-auto-config.sh)"
+sudo sh -c "$(curl -fsSL https://raw.github.com/cain2/vm-auto-config/master/vm-auto-config.sh)"
 ```
 
 ##### via WGET
 ```bash
-sh -c "$(wget https://raw.githubusercontent.com/cain2/vm-auto-config/master/vm-auto-config.sh -O -)"
+sudo sh -c "$(wget https://raw.github.com/cain2/vm-auto-config/master/vm-auto-config.sh -O -)"
+```
+
+##### Housekeeping
+```bash
+exit
+zsh
+sudo chown -R $(whoami):$(whoami) /server/*
 ```
 
 #### features:
