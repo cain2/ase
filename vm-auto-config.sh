@@ -20,7 +20,7 @@ echo "deb-src http://ftp.cuhk.edu.hk/pub/Linux/ubuntu trusty-proposed main restr
 # update apt source first
 apt-get update
 # some dependent packages
-apt-get install -y git-core software-properties-common htop tree zsh
+apt-get install -y git-core software-properties-common htop tree zsh python
 # those packages for pyenv
 apt-get install -y libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev llvm libncurses5-dev
 
