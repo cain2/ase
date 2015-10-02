@@ -48,8 +48,8 @@ git clone https://github.com/yyuu/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-vi
 # write pyenv script for /bin/bash
 echo 'export PYENV_ROOT="$HOME/.pyenv"' > /server/cmd/pyenv.sh
 echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> /server/cmd/pyenv.sh
-echo 'if which pyenv > /dev/null; then eval "$(pyenv init -)"' >> /server/cmd/pyenv.sh
-echo 'if which pyenv > /dev/null; then eval "$(pyenv virtualenv-init -)"' >> /server/cmd/pyenv.sh
+echo 'eval "$(pyenv init -)"' >> /server/cmd/pyenv.sh
+echo 'eval "$(pyenv virtualenv-init -)"' >> /server/cmd/pyenv.sh
 
 # remove old setting if exists
 sed -i 's/^.*\s#pyenv_init//g' $HOME/.bashrc
