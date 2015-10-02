@@ -24,7 +24,7 @@ sudo sh -c "$(wget https://raw.github.com/cain2/vm-auto-config/master/vm-auto-co
 ##### housekeeping
 your screen should like this now:
 
-<img src="https://raw.githubusercontent.com/cain2/vm-auto-config/master/capture/capture.png" width="300px">
+<img src="https://raw.githubusercontent.com/cain2/vm-auto-config/master/capture/capture-1.png" width="300px">
 
 and now you should run below command to see the result:
 
