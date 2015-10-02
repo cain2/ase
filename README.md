@@ -22,7 +22,7 @@ sudo sh -c "$(wget https://raw.github.com/cain2/vm-auto-config/master/vm-auto-co
 ```
 
 ##### housekeeping
-you will see this screen:
+your screen should like this now:
 
 <img src="https://raw.githubusercontent.com/cain2/vm-auto-config/master/capture/capture.png" width="300px">
 
@@ -32,6 +32,11 @@ and now you should run below command to see the result:
 exit
 zsh
 ```
+
+result:
+
+<img src="https://raw.githubusercontent.com/cain2/vm-auto-config/master/capture/capture-2.png" width="300px">
+
 
 #### features:
 0. install git-core software-properties-common htop tree zsh
