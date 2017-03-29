@@ -26,6 +26,7 @@ apt install -y curl wget htop make git
 apt install -y python python-dev
 apt install -y build-essential
 apt install -y libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev llvm libncurses5-dev
+apt install -y uwsgi uwsgi-plugin-python3 supervisor
 
 echo "installing powerline-shell..."
 mkdir -p /server/git
@@ -98,6 +99,12 @@ chmod 600 ~/.ssh/authorized_keys
 
 echo "remove myself..."
 rm -Rf ~/1604.sh
+
+echo "install predicted python version"
+pyenv install 3.5.2
+pyenv install 2.7.12
+pyenv rehash
+
 echo "done!"
 sudo reboot -h now
 # exec $SHELL
