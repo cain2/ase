@@ -26,7 +26,7 @@ apt install -y curl wget htop make git
 apt install -y python python-dev
 apt install -y build-essential
 apt install -y libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev llvm libncurses5-dev
-apt install -y uwsgi uwsgi-plugin-python3 supervisor
+apt install -y uwsgi uwsgi-plugin-python3 supervisor python3 python3-dev
 
 echo "installing powerline-shell..."
 mkdir -p /server/git
