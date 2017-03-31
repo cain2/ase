@@ -46,7 +46,14 @@ echo "installing pyenv & pyenv-virtualenv..."
 git clone https://github.com/yyuu/pyenv.git ~/.pyenv
 git clone https://github.com/yyuu/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
 
+echo "installing nvm..."
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash
+
+
 echo "binding pyenv with oh-my-zsh..."
+echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.zshrc
+echo '[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && nvm use --delete-prefix v7.3.0 # This loads nvm' >> ~/.zshrc
+echo '' >> ~/.zshrc
 echo 'function powerline_precmd() {' >> ~/.zshrc
 echo '    PS1="$(~/powerline-shell.py $? --shell zsh 2> /dev/null)"' >> ~/.zshrc
 echo '}' >> ~/.zshrc
@@ -90,6 +97,10 @@ echo 'export LC_ALL="en_US.UTF-8"' >> ~/.zshrc
 echo "misc setting..."
 echo 'set number' > ~/.vimrc
 echo 'syntax on' >> ~/.vimrc
+
+. ~/.zshrc
+
+nvm install v7.3.0
 
 echo "ssh setting up..."
 apt install -y openssh-server
