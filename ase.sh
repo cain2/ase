@@ -1,121 +1,75 @@
 #!/bin/bash
 
-# export password="your_own_password"
+echo -n "Enter your password: "
+read password
 
-echo "=====-=====-=====-=====-=====-=====-=====-====="
-echo "Installation start..."
-
-# echo "changing root password..."
-# echo -e "$password\n$password" | sudo passwd root
-
-echo "changing ssh setting..."
-sed -i "s/PermitRootLogin prohibit-password/PermitRootLogin yes/g" /etc/ssh/sshd_config
-
-echo "restarting ssh service..."
-service ssh restart
-
-echo "ip address:"
-ifconfig | grep 'inet addr:' | cut -d: -f2 | awk '{print $1}'
-
-echo "updating apt source..."
-apt -y update
-apt -y upgrade
-
-echo "installing core packages..."
-apt install -y curl wget htop make git
-apt install -y python python-dev
-apt install -y build-essential
-apt install -y libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev llvm libncurses5-dev
-apt install -y uwsgi uwsgi-plugin-python3 supervisor python3 python3-dev
-
-echo "installing powerline-shell..."
-mkdir -p /server/git
-cd /server/git
-git clone https://github.com/milkbikis/powerline-shell /server/git/powerline-shell
-cd /server/git/powerline-shell && ./install.py
-
-ln -s /server/git/powerline-shell/powerline-shell.py ~/powerline-shell.py
-
-echo "installing oh-my-zsh..."
-apt install -y zsh
-echo -e "exit" | sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" >/dev/null 2>&1
-sed -i "s/robbyrussell/agnoster/g" ~/.zshrc
-sed -i "s/plugins=(git)/plugins=(git pyenv)/g" ~/.zshrc
-
-echo "installing pyenv & pyenv-virtualenv..."
-git clone https://github.com/yyuu/pyenv.git ~/.pyenv
-git clone https://github.com/yyuu/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
-
-echo "installing nvm..."
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash
+# ---------------------------------------------------------
+# 中文：修改Sudo指令為不用Password執行
+# Eng:  change all sudoers to run sudo without password
+# ---------------------------------------------------------
+echo -e "$password" | sudo sed -i "s/ALL=(ALL:ALL) ALL/ALL=(ALL:ALL) NOPASSWD:ALL/g" /etc/sudoers
+sudo sed -i "s/auth       required   pam_shells.so/auth       sufficient   pam_shells.so/" /etc/pam.d/chsh
 
 
-echo "binding pyenv with oh-my-zsh..."
-echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.zshrc
-echo '[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && nvm use --delete-prefix v7.3.0 # This loads nvm' >> ~/.zshrc
-echo '' >> ~/.zshrc
-echo 'function powerline_precmd() {' >> ~/.zshrc
-echo '    PS1="$(~/powerline-shell.py $? --shell zsh 2> /dev/null)"' >> ~/.zshrc
-echo '}' >> ~/.zshrc
-echo '' >> ~/.zshrc
-echo 'function install_powerline_precmd() {' >> ~/.zshrc
-echo '  for s in "${precmd_functions[@]}"; do' >> ~/.zshrc
-echo '    if [ "$s" = "powerline_precmd" ]; then' >> ~/.zshrc
-echo '      return' >> ~/.zshrc
-echo '    fi' >> ~/.zshrc
-echo '  done' >> ~/.zshrc
-echo '  precmd_functions+=(powerline_precmd)' >> ~/.zshrc
-echo '}' >> ~/.zshrc
-echo '' >> ~/.zshrc
-echo 'if [ "$TERM" != "linux" ]; then' >> ~/.zshrc
-echo '    install_powerline_precmd' >> ~/.zshrc
-echo 'fi' >> ~/.zshrc
-echo '' >> ~/.zshrc
-echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
-echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
-echo '' >> ~/.zshrc
-echo 'eval "$(pyenv init -)"' >> ~/.zshrc
-echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.zshrc
+# ---------------------------------------------------------
+# 中文：修改apt sources、更新及安裝基本軟件包
+# Eng:  change all sudoers to run sudo without password
+# ---------------------------------------------------------
+sudo chmod 700 /etc/apt/sources.list
 
-echo "binding pyenv with oh-my-zsh..."
-echo 'export LANG="en_US.UTF-8"' >> ~/.zshrc
-echo 'export LANGUAGE="en_US.UTF-8"' >> ~/.zshrc
-echo 'export LC_CTYPE="en_US.UTF-8"' >> ~/.zshrc
-echo 'export LC_NUMERIC="en_US.UTF-8"' >> ~/.zshrc
-echo 'export LC_TIME="en_US.UTF-8"' >> ~/.zshrc
-echo 'export LC_COLLATE="en_US.UTF-8"' >> ~/.zshrc
-echo 'export LC_MONETARY="en_US.UTF-8"' >> ~/.zshrc
-echo 'export LC_MESSAGES="en_US.UTF-8"' >> ~/.zshrc
-echo 'export LC_PAPER="en_US.UTF-8"' >> ~/.zshrc
-echo 'export LC_NAME="en_US.UTF-8"' >> ~/.zshrc
-echo 'export LC_ADDRESS="en_US.UTF-8"' >> ~/.zshrc
-echo 'export LC_TELEPHONE="en_US.UTF-8"' >> ~/.zshrc
-echo 'export LC_MEASUREMENT="en_US.UTF-8"' >> ~/.zshrc
-echo 'export LC_IDENTIFICATION="en_US.UTF-8"' >> ~/.zshrc
-echo 'export LC_ALL="en_US.UTF-8"' >> ~/.zshrc
+echo '' | sudo tee /etc/apt/sources.list && sudo cat /etc/apt/sources.list
+echo 'deb http://archive.ubuntu.com/ubuntu bionic main restricted' | sudo tee -a /etc/apt/sources.list
+echo 'deb-src http://archive.ubuntu.com/ubuntu bionic main restricted' | sudo tee -a /etc/apt/sources.list
+echo 'deb http://archive.ubuntu.com/ubuntu bionic-updates main restricted' | sudo tee -a /etc/apt/sources.list
+echo 'deb-src http://archive.ubuntu.com/ubuntu bionic-updates main restricted' | sudo tee -a /etc/apt/sources.list
+echo 'deb http://archive.ubuntu.com/ubuntu bionic universe' | sudo tee -a /etc/apt/sources.list
+echo 'deb-src http://archive.ubuntu.com/ubuntu bionic universe' | sudo tee -a /etc/apt/sources.list
+echo 'deb http://archive.ubuntu.com/ubuntu bionic-updates universe' | sudo tee -a /etc/apt/sources.list
+echo 'deb-src http://archive.ubuntu.com/ubuntu bionic-updates universe' | sudo tee -a /etc/apt/sources.list
+echo 'deb http://archive.ubuntu.com/ubuntu bionic multiverse' | sudo tee -a /etc/apt/sources.list
+echo 'deb-src http://archive.ubuntu.com/ubuntu bionic multiverse' | sudo tee -a /etc/apt/sources.list
+echo 'deb http://archive.ubuntu.com/ubuntu bionic-updates multiverse' | sudo tee -a /etc/apt/sources.list
+echo 'deb-src http://archive.ubuntu.com/ubuntu bionic-updates multiverse' | sudo tee -a /etc/apt/sources.list
+echo 'deb http://archive.ubuntu.com/ubuntu bionic-backports main restricted universe multiverse' | sudo tee -a /etc/apt/sources.list
+echo 'deb-src http://archive.ubuntu.com/ubuntu bionic-backports main restricted universe multiverse' | sudo tee -a /etc/apt/sources.list
+echo 'deb http://security.ubuntu.com/ubuntu bionic-security main restricted' | sudo tee -a /etc/apt/sources.list
+echo 'deb-src http://security.ubuntu.com/ubuntu bionic-security main restricted' | sudo tee -a /etc/apt/sources.list
+echo 'deb http://security.ubuntu.com/ubuntu bionic-security universe' | sudo tee -a /etc/apt/sources.list
+echo 'deb-src http://security.ubuntu.com/ubuntu bionic-security universe' | sudo tee -a /etc/apt/sources.list
+echo 'deb http://security.ubuntu.com/ubuntu bionic-security multiverse' | sudo tee -a /etc/apt/sources.list
+echo 'deb-src http://security.ubuntu.com/ubuntu bionic-security multiverse' | sudo tee -a /etc/apt/sources.list
 
-echo "misc setting..."
-echo 'set number' > ~/.vimrc
-echo 'syntax on' >> ~/.vimrc
+sudo apt update
+sudo apt upgrade -y
+sudo apt-get install -y vim zsh git htop wget tree make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev
 
-. ~/.zshrc
+# ---------------------------------------------------------
+# 中文：加入vim基本設定
+# Eng:  add vim base setting
+# ---------------------------------------------------------
+echo 'set number' >> $HOME/.vimrc
+echo 'syntax on' >> $HOME/.vimrc
+cat $HOME/.vimrc
 
-nvm install v7.3.0
+# ---------------------------------------------------------
+# 中文：新建所需檔案夾及調整權限
+# Eng:  make directory and adjust the permission
+# ---------------------------------------------------------
+mkdir -p $HOME/.ssh
+touch $HOME/.ssh/authorized_keys
+chmod 600 $HOME/.ssh/authorized_keys
+sudo mkdir -p /server/{git,lab}
+sudo chown -R $(whoami):$(whoami) /server
 
-echo "ssh setting up..."
-apt install -y openssh-server
-mkdir ~/.ssh -p
-touch ~/.ssh/authorized_keys
-chmod 600 ~/.ssh/authorized_keys
+# ---------------------------------------------------------
+# 中文：安裝zsh及oh-my-zsh
+# Eng:  instlal zsh and oh-my-zsh
+# ---------------------------------------------------------
+echo "exit" | sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+# sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sed 's:env zsh::g' | sed 's:chsh -s .*$::g')"
 
-echo "remove myself..."
-rm -Rf ~/1604.sh
+sed -i "s/robbyrussell/agnoster/g" $HOME/.zshrc
+sed -i ':a;N;$!ba;s/plugins=(\n  git\n)/plugins=(\n  git\n  pyenv\n)/g' $HOME/.zshrc
 
-echo "install predicted python version"
-pyenv install 3.5.2
-pyenv install 2.7.12
-pyenv rehash
-
-echo "done!"
-sudo reboot -h now
-# exec $SHELL
+wget https://raw.githubusercontent.com/cain2/ase/master/L2.sh
+/bin/zsh $(pwd)/L2.sh
