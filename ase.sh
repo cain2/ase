@@ -74,3 +74,5 @@ sed -i ':a;N;$!ba;s/plugins=(\n  git\n)/plugins=(\n  git\n  pyenv\n)/g' $HOME/.z
 
 wget https://raw.githubusercontent.com/cain2/ase/master/L2.sh
 /bin/zsh $(pwd)/L2.sh
+
+rm -Rf L2.sh
