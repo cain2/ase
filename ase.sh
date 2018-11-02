@@ -1,5 +1,6 @@
 #!/bin/bash
 
+clear
 echo -n "Enter your password: "
 read password
 
