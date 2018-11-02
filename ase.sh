@@ -41,8 +41,8 @@ echo 'deb-src http://security.ubuntu.com/ubuntu bionic-security universe' | sudo
 echo 'deb http://security.ubuntu.com/ubuntu bionic-security multiverse' | sudo tee -a /etc/apt/sources.list
 echo 'deb-src http://security.ubuntu.com/ubuntu bionic-security multiverse' | sudo tee -a /etc/apt/sources.list
 
-sudo apt update
-sudo apt upgrade -y
+sudo apt-get update
+sudo apt-get upgrade -y
 sudo apt-get install -y vim zsh git htop wget tree make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev
 
 # ---------------------------------------------------------

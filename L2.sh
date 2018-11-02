@@ -33,7 +33,7 @@ source $HOME/.zshrc
 
 # 中文：安裝系統層python
 # ---------------------------------------------------------
-sudo apt install -y python python-dev python-pip
+sudo apt-get install -y python python-dev python-pip
 
 # ---------------------------------------------------------
 # 中文：安裝python 2.7.15及3.7.0
@@ -88,7 +88,7 @@ nvm use default
 # Eng:  instlal ruby
 # ---------------------------------------------------------
 
-sudo apt install -y ruby ruby-dev libpam-dev
+sudo apt-get install -y ruby ruby-dev libpam-dev
 sudo gem install rpam-ruby19
 
 mkdir -p $HOME/tmp
