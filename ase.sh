@@ -1,6 +1,7 @@
 #!/bin/bash
 
-clear
+clear >$(tty)
+
 echo -n "Enter your password: "
 read password
 

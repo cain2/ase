@@ -220,7 +220,7 @@ cd $HOME/.pyenv/cache
 wget https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tar.xz
 wget https://www.python.org/ftp/python/2.7.15/Python-2.7.15.tar.xz
 
-pyenv install 2.7.15 -v 
+echo -e "N" | pyenv install 2.7.15 -v 
 echo -e "N" | pyenv install 3.7.0 -v
 pyenv rehash
 pyenv global 2.7.15
