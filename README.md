@@ -3,41 +3,29 @@ it's called [a]wesome [s]hell [e]nvironment.
 
 author: [cain](mailto:cain@jitpo.com)
 
-version: 0.1
+version: 0.2
 
 
 #### tested environment:
-OS: Ubuntu Server (16.04.1 LTS)
+OS: Ubuntu 18.04.1 LTS
 
-Kernel: 4.4.0-38-generic (x86_64)
+Kernel: GNU/Linux 4.15.0-36-generic x86_64
 
 
 #### dependency repo(s):
-[powerline-shell](https://github.com/milkbikis/powerline-shell)
-
-[pyenv](https://github.com/yyuu/pyenv)
-
-[pyenv-virtualenv](https://github.com/yyuu/pyenv-virtualenv)
-
 [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
+[powerline-shell](https://github.com/b-ryan/powerline-shell)
+[pyenv-installer](https://github.com/pyenv/pyenv-installer)
+[nvm](https://github.com/creationix/nvm)
+[go](https://storage.googleapis.com/golang/getgo/installer_linux)
+[Python 3.7.0](https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tar.xz)
+[Python 2.7.15](https://www.python.org/ftp/python/2.7.15/Python-2.7.15.tar.xz)
 
 *(listed in no particular order)*
 
 
-#### features:
-0. install git-core software-properties-common htop tree zsh
-+ libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev for __pyenv environment__
-+ enable ssh root login
-+ preset vim display setting through .vimrc
-+ touch the authroized_keys file for ssh-copy-id
-+ install [powerline-shell](https://github.com/milkbikis/powerline-shell) both for bash & zsh from github repo
-+ install [pyenv](https://github.com/yyuu/pyenv) & [pyenv-virtualenv](https://github.com/yyuu/pyenv-virtualenv) from github repo
-+ fix locale setting to en_US.UTF-8
-+ install [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) and change theme to agnoster
-
-
 #### installation:
-just run the following one-line script as root.
+just run the following one-line script as your own user.
 
 
 ##### via curl
@@ -60,10 +48,13 @@ and you get the same shell environment as me now.
 
 
 #### latest update:
-30 September 2016
+7 November 2018
 
 
 #### release note:
+7 November 2018 - 0.2:
+* Ubuntu 18.04.1 supported (only)
+
 30 September 2016 - 0.1:
 * Ubuntu 16.04.1 supported
 * make the code more straight forward
