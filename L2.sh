@@ -111,9 +111,9 @@ source $HOME/.zshrc
 # exec $SHELL
 
 
-echo 'export GOPATH=/home/cain/go' >> $HOME/.zshrc
-echo 'export PATH=$PATH:/home/cain/go/bin' >> $HOME/.zshrc
-echo 'export PATH=$PATH:/home/cain/.go/bin' >> $HOME/.zshrc
+echo 'export GOPATH=$HOME/go' >> $HOME/.zshrc
+echo 'export PATH=$PATH:$HOME/go/bin' >> $HOME/.zshrc
+echo 'export PATH=$PATH:$HOME/.go/bin' >> $HOME/.zshrc
 
 # =========================================================
 # 中文：重入載入SHELL
