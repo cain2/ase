@@ -30,12 +30,12 @@ just run the following one-line script as your own user.
 
 ##### via curl
 ```bash
-sudo sh -c "$(curl -fsSL https://raw.github.com/cain2/ase/master/ase.sh)"
+sh -c "$(curl -fsSL https://raw.github.com/cain2/ase/master/ase.sh)"
 ```
 
 ##### via wget
 ```bash
-sudo sh -c "$(wget https://raw.github.com/cain2/ase/master/ase.sh -O -)"
+sh -c "$(wget https://raw.github.com/cain2/ase/master/ase.sh -O -)"
 ```
 
 
